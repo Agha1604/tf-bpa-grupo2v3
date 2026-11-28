@@ -500,7 +500,10 @@ elif pagina == "🔮 Hacer Predicciones":
 
         st.subheader("📝 Datos de la Sesión")
         meses_opc = orden_meses if base['month'] in orden_meses else orden_meses + [base['month']]
-        tipos = ["Returning_Visitor", "New_Visitor", "Other"]
+        tipos = ["Returning_Visitor", "New_Visitor"]
+        # Other solo aparece si la sesión aleatoria del test lo trae
+        if base['visitor_type'] not in tipos:
+            tipos.append(base['visitor_type'])
 
         tab1, tab2 = st.tabs(["🗓️ Mes y visitante", "📄 Páginas y tiempos"])
         input_data = {}
